@@ -98,6 +98,6 @@ Private key:  <private_key>
 Public key:  <public_key>
 Address: 0x<ethereum_address>
 
-##Notes
+## Notes
 Keep your private key secure. Exposing it can result in loss of funds.
 The generated address can be used to receive Ethereum and tokens on the Ethereum blockchain.
