@@ -22,30 +22,30 @@ import ecdsa                    # Install ecdsa
 from Crypto.Hash import keccak  # Install pycryptodome
 import os
 
-# Generate a random private key (32 bytes)
+// Generate a random private key (32 bytes)
 private_key_bytes = os.urandom(32)
 
-# Generate the public key using the SECP256k1 curve
+// Generate the public key using the SECP256k1 curve
 key = ecdsa.SigningKey.from_string(private_key_bytes, curve=ecdsa.SECP256k1).verifying_key
 
-# Convert keys to byte strings
+// Convert keys to byte strings
 key_bytes = key.to_string()
 private_key = codecs.encode(private_key_bytes, 'hex')
 public_key = codecs.encode(key_bytes, 'hex')
 
-# Print the private and public keys
+// Print the private and public keys
 print("Private key: ", private_key)
 print("Public key: ", public_key)
 
-# Decode the public key from hex to bytes
+// Decode the public key from hex to bytes
 public_key_bytes = codecs.decode(public_key, 'hex')
 
-# Create a Keccak-256 hash object and update it with the public key bytes
+// Create a Keccak-256 hash object and update it with the public key bytes
 hash = keccak.new(digest_bits=256)
 hash.update(public_key_bytes)
 keccak_digest = hash.hexdigest()
 
-# Take the last 20 bytes of the Keccak-256 hash to form the Ethereum address
+// Take the last 20 bytes of the Keccak-256 hash to form the Ethereum address
 address = '0x' + keccak_digest[-40:]
 print("Address:", address)
 ## Detailed Steps
